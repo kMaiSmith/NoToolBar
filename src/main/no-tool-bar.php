@@ -9,6 +9,14 @@ Author URI: http://www.kmaismith.com/
 License: Affero GPL
 */
 
-add_filter('show_admin_bar', '__return_false');
+function redirect_if_single() {
+	if( is_single() ) {
+		wp_redirect( '/', 301 );
+	}
+}
 
+add_action('wp', 'redirect_if_single');
+
+
+add_filter('show_admin_bar', '__return_false');
 ?>
