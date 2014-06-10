@@ -17,6 +17,10 @@ function redirect_if_single() {
 
 add_action('wp', 'redirect_if_single');
 
-
 add_filter('show_admin_bar', '__return_false');
+
+if ( strpos( $_SERVER[ "HTTP_REFERER" ], get_site_url() ) === false ) {
+	setcookie( "siteReferer", $_SERVER[ "HTTP_REFERER" ] );
+} 
+
 ?>
